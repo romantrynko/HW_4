@@ -375,4 +375,3 @@ function userAddress (usersWithId, citiesWithId) {
 }
 
 console.log(userAddress (usersWithId, citiesWithId));
-
