@@ -102,31 +102,31 @@
 // _______________________ P U R E   C L A S S _____________________________
 
 
-class Human {
-  constructor(age, gender, color) {
-    this.age = age;
-    this.gender = gender;
-    this.color = color;
-    this.money = 0;
-  }
+// class Human {
+//   constructor(age, gender, color) {
+//     this.age = age;
+//     this.gender = gender;
+//     this.color = color;
+//     this.money = 0;
+//   }
 
-  eat() {
-    document.write('is eating');
-  }
+//   eat() {
+//     document.write('is eating');
+//   }
 
-  goWork() {
-    this.money += 100;
-  }
+//   goWork() {
+//     this.money += 100;
+//   }
 
-  goBeer() {
-    if(this.money > 200) {
-      document.write('I am drunk');
-      this.money -= 200;
-    } else {
-      document.write('No money - no honey');
-    }
-  }
-}
+//   goBeer() {
+//     if (this.money > 200) {
+//       document.write('I am drunk');
+//       this.money -= 200;
+//     } else {
+//       document.write('No money - no honey');
+//     }
+//   }
+// }
 
 // let Roman = new Human(32, 'male', 'white');
 
@@ -150,35 +150,259 @@ class Human {
 // _______________________ E X T E N D S _________________________
 
 
-class Developer extends Human {
-  constructor(age, gender, color, skill) {
-    super(age, gender, color);
-    this.skill = skill;
-  };
+// class Developer extends Human {
+//   constructor(age, gender, color, skill) {
+//     super(age, gender, color);
+//     this.skill = skill;
+//   };
 
-  goWork() {
-    this.money += 500;
-  }
+//   goWork() {
+//     this.money += 500;
+//   }
 
-  goBeer() {
-    if (this.money < 500) {
-      document.write('hire me');
-    } else {
-      document.write('go');
-    }
-  }
+//   goBeer() {
+//     if (this.money < 500) {
+//       document.write('hire me');
+//     } else {
+//       document.write('go');
+//     }
+//   }
+// }
+
+// let Roman = new Developer(32, 'male', 'white', 'node.js');
+
+// Roman.goWork();
+// Roman.goWork();
+// Roman.goWork();
+// Roman.goWork();
+// Roman.goWork();
+// Roman.goWork();
+// Roman.goWork();
+
+// Roman.goBeer();
+
+// console.log(Roman);
+// 
+// 
+
+// _______________________ P R O T O   A R R A Y   M E T H O D S _________________________
+// 
+// 
+// let numbers = [1, 6, 9, 0, 22, 29];
+
+
+
+// ___ S O R T __________
+
+
+// let sorted = numbers.sort((a, b) => {
+//   return a - b;
+// });
+
+// console.log(sorted);
+
+
+// ___ F I L T E R __________
+
+
+// numbers.filter((value, index, array) => {
+//   console.log(value);
+//   console.log(index);
+//   console.log(array);
+//   console.log('__________');
+// })
+
+// let filtered_1 = numbers.filter((value, index) => {
+//   return value % 2 === 0
+// });
+
+// let filtered_1 = numbers.filter(value => !(value % 2));
+
+// console.log(filtered_1);
+
+
+// ___ M A P __________
+
+
+// let mapped = numbers.map((value, index) => {
+//   if (!(value % 2)) {
+//     return value * 2
+//   }
+
+//   return value
+// });
+
+// console.log(mapped);
+
+let names = ['Roman', 'Dima', 'Sergaio', 'Igoar', 'Andrew'];
+
+// let namesId = names.map((name, id, names) => {
+//   return {
+//     name,
+//     id: id + 1,
+//     address: 'Lviv',
+//     arrNames: names[id]
+//   }
+// });
+
+// console.log(namesId);
+
+
+// ___ F O R   E A C H __________
+
+
+// numbers.forEach((value, index, array) => {
+//   if(!(value % 2)) {
+//     return
+//   }
+//   console.log(value);
+// })
+
+
+// ___ F I N D __________
+
+
+// let finded = names.find(value => {
+//   return value.toLowerCase().startsWith('s');
+// });
+
+// console.log(finded);
+
+
+// ___ F I N D   I N D E X __________
+
+
+// let findedIndex = names.findIndex(value => {
+//   return value.toLowerCase().startsWith('a');
+// });
+
+// console.log(findedIndex);
+
+
+// ___ J O I N __________
+
+// let joined = names.join('_');
+
+// console.log(joined);
+
+
+// ___ I N C L U D E S __________
+
+
+// let included = names.includes('Roman');
+
+// console.log(included);
+
+
+// ___ S O M E  /  E V E R Y __________
+
+
+// let some = names.some(value => {
+//   return value.toLowerCase().startsWith('r');
+// });
+
+// console.log(some);
+
+
+// let every = names.every(value => {
+//   return value.toLowerCase().includes('b');
+// });
+
+// console.log(every);
+
+
+
+// ______ F L A T _______________________
+
+
+// let arrInArr = [1, 2, 5, 4, [8, 9, 5, 15, [5, 9, 7, [5, 8, 12], 8], [8, 9, 2, [58, 45, 6, [14, 25, 10]], 25, 12, 2], 25, 2]];
+
+// let flat = arrInArr.flat(3);
+
+// console.log(flat);
+
+
+// ______ R E D U C E _______________________
+
+
+// let numbers = [1, 6, 9, 0, 22, 29];
+
+// let reduced = numbers.reduce((prev, curr) => {
+//   console.log(prev);
+//   console.log(curr);
+//   console.log('____________');
+
+//   return prev + curr;
+// }, 0);
+
+// console.log(reduced);
+
+
+
+// _________ P R O T O T Y P E    E X T E N D S _________________
+
+
+
+// function Animal(name, color) {
+//   this.name = name;
+//   this.color = color;
+
+//   // this.run = function () {
+//   //   console.log('running');
+//   // }
+// };
+
+// Animal.prototype.run = function () {
+//   console.log(this.name + ' running');
+// };
+
+
+// function Hamster(name, color, house) {
+//   this.name = name;
+//   this.color = color;
+//   this.house = house;
+// };
+
+// // Hamster.prototype.__proto__ = Animal.prototype;
+
+// Hamster.prototype = Object.create(Animal.prototype);
+
+// let zebra = new Animal('Zebra', 'red');
+// let bobra = new Animal('bobra', 'blue');
+// let kibra = new Animal('kibra', 'white');
+
+// let hamster = new Hamster('Hamster', 'white', true);
+
+// zebra.run();
+// bobra.run();
+// kibra.run();
+
+// hamster.run();
+
+// Hamster.prototype.run = function () {
+//   console.log('Hello');
+// }
+
+
+function Hamster(name) {
+  this.name = name;
+  this.stomach = []
 }
 
-let Roman = new Developer(32, 'male', 'white', 'node.js');
+// Hamster.prototype.stomach = [];
 
-Roman.goWork();
-Roman.goWork();
-Roman.goWork();
-Roman.goWork();
-Roman.goWork();
-Roman.goWork();
-Roman.goWork();
+Hamster.prototype.findFood = function (food) {
+  this.stomach.push(food)
+}
 
-Roman.goBeer();
+let Master = new Hamster('Master');
+let Yoda = new Hamster('Yoda');
 
-console.log(Roman);
+console.log(Master.stomach);
+console.log(Yoda.stomach);
+
+Master.findFood('Apple');
+Yoda.findFood('Light saber');
+
+console.log(Master.stomach);
+console.log(Yoda.stomach);
