@@ -1,23 +1,30 @@
-localStorage.setItem('1', 'value 1');
+// navigator.geolocation.getCurrentPosition(({coords}) => {
+//   console.log(coords.latitude);
+//   console.log(coords.longitude);
+//   console.log(coords.altitude);
+// })
 
-const user = {
-  name: 'Roman',
-  age: 32,
-  job: 'Senior JS developer'
-};
+// let webCam = document.getElementById('webCam');
 
-localStorage.setItem('user', user);
-localStorage.setItem('userJSON', JSON.stringify(user));
+// navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(value => {
+//   webCam.srcObject = value;
 
-const jsonUser = localStorage.getItem('userJSON');
+//   webCam.play();
+// });
 
-const parsedUser = JSON.parse(jsonUser);
+// console.log(navigator);
 
-console.log(jsonUser);
-console.log(parsedUser);
+// const filters = [
+//   { vendorId: 0x1209, productId: 0xa800 },
+//   { vendorId: 0x1209, productId: 0xa850 }
+// ];
+// navigator.usb.requestDevice({ filters: filters })
+//   .then(usbDevice => {
+//     console.log("Product name: " + usbDevice.productName);
+//   })
+//   .catch(e => {
+//     console.log("There is no device. " + e);
+//   });
 
-localStorage.removeItem('user');
 
-console.log(localStorage.length);
 
-localStorage.clear();
