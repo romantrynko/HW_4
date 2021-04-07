@@ -1,91 +1,110 @@
+// ____________________________ P R O M I S E _______ об'єкт ________________
 
 
 
+//     p e n d i n g ( за замовчуванням в стані очікування )
 
-// function goToTurkey(covid, cb) {
-//   setTimeout(() => {
-//     if (covid) {
-//       cb('covid is present', null)
-//     } else {
-//       cb(null, 'everything is OK')
-//     }
-//   }, 2000)
+//                 --   r e s o l v e ( виконався успішно )
+
+//                    --    r e j e c t ( не виконався )
+
+
+
+// let money = 0;
+
+// const clearHouse = (jobDone) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (jobDone) {
+//         money = 500;
+
+//         resolve(money);
+//       } else {
+//         reject('err')
+//       }
+//     }, 1000);
+//   })
 // };
 
-// goToTurkey(false, (err, data) => {
-//   if(err) {
-//     console.log(err, 'bad');
-//   } else {
-//     console.log('good', data);
-//   }
-// });
+// const buyJeans = (money) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (money > 200) {
+//         console.log('buy jeans');
+//         money = money - 200;
+//         resolve(money)
+//       } else {
+//         reject('no money')
+//       }
+//     }, 1000)
+//   })
+// };
 
+// const goEat = (money) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (money > 100) {
+//         console.log('go eat');
+//         money = money - 50;
 
+//         resolve(money);
+//       } else {
+//         reject('no money for food');
+//       }
 
-let money = 0;
+//     }, 1000);
+//   })
+// }
 
-const clearHouse = (jobDone, cb) => {
+// clearHouse(true)
+//   .then(value => {
+//     console.log('clearHouse()', value);
+//     return buyJeans(value);
+//   })
+//   .then(value => {
+//     console.log('buyJeans', value);
+//     return goEat(100);
+//   })
+//   .then(value => {
+//     console.log('goEat', value);
+//     return value;
+//   })
+//   .catch(reason => {
+//     console.error(reason);
+//   })
+//   .finally(() => {
+//     console.log('anyway');
+//   });
+
+const one = new Promise(resolve => {
   setTimeout(() => {
-    if (jobDone) {
-      money = 500;
-
-      cb(null, money);
-    } else {
-      cb('oops')
-    }
-  }, 2000);
-};
-
-const buyJeans = (money, cb) => {
-  setTimeout(() => {
-    if (money > 200) {
-      console.log('buy jeans');
-      money = money - 200;
-
-      cb(null, money)
-    } else {
-      console.log('no money');
-
-      cb('no', null)
-    }
-  }, 1000)
-};
-
-const goEat = (money, cb) => {
-  if (money > 100) {
-    console.log('go eat');
-    money = money - 50;
-
-    cb(null, money)
-  } else {
-    console.log('no money');
-    
-    cb(err)
-  }
-}
-
-clearHouse(true, (err, data) => {
-  if (err) {
-    document.write('something went wrong')
-  } else {
-    document.write('ok ' + data);
-
-    buyJeans(data, (err, rest) => {
-      if (err) {
-        document.write('no money');
-      } else {
-        document.write('yes!');
-
-        goEat(rest, (err, data) => {
-          if (err) {
-            document.write('no money for food');
-          } else {
-            document.write('eat your food')
-          }
-        })
-      }
-    })
-  }
+    resolve(1)
+  }, 3000);
 });
 
-console.log(money);
+const two = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(2)
+  }, 2000);
+});
+
+const three = new Promise(resolve => {
+  setTimeout(() => {
+    resolve(3)
+  }, 4000);
+});
+
+// Promise.race([one, two, three])
+//   .then(value => {
+//     console.log(value);
+//   });
+
+// Promise.all([one, two.catch(reason => {return reason}), three])
+//   .then(value => {
+//     console.log(value);
+//   });
+
+Promise.allSettled([one, two, three])
+  .then(value => {
+    console.log(value);
+  });
