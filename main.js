@@ -1,104 +1,91 @@
-// navigator.geolocation.getCurrentPosition(({coords}) => {
-//   console.log(coords.latitude);
-//   console.log(coords.longitude);
-//   console.log(coords.altitude);
-// })
-
-// let webCam = document.getElementById('webCam');
-
-// navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(value => {
-//   webCam.srcObject = value;
-
-//   webCam.play();
-// });
-
-// console.log(navigator);
-
-// const filters = [
-//   { vendorId: 0x1209, productId: 0xa800 },
-//   { vendorId: 0x1209, productId: 0xa850 }
-// ];
-// navigator.usb.requestDevice({ filters: filters })
-//   .then(usbDevice => {
-//     console.log("Product name: " + usbDevice.productName);
-//   })
-//   .catch(e => {
-//     console.log("There is no device. " + e);
-//   });
 
 
 
-// function functionWithCB (callBack) {
-//   console.log(callBack);
 
-//   callBack()
-// };
-
-// functionWithCB(function () {
-//   console.log('Call Back');
-// });
-
-// const arr = ['corona', 'blm', 'rain'];
-
-// const summer = (array) => {
-//   const [h, r] = array;
-//   console.log(h, r);
-// };
-
-// summer(['hello', 'Roman']);
-
-// const cbFunction = (value) => {
-//   const pro = prompt();
-
-//   value(pro);
-// };
-
-// cbFunction((param) => {
-//   document.write(param);
-// });
-
-// cbFunction(() => {
-//   console.log(22);
-// });
-
-
-// arr.sort((a, b) => {
-//   return a - b
-// });
-
-// let money = 0;
-
-// const clearHouse = (jobIsDone, cb) => {
+// function goToTurkey(covid, cb) {
 //   setTimeout(() => {
-//     if (jobIsDone) {
-//       money = 500;
-//       cb(money);
+//     if (covid) {
+//       cb('covid is present', null)
 //     } else {
-//       document.write('bad')
+//       cb(null, 'everything is OK')
 //     }
-//   }, 2500)
+//   }, 2000)
 // };
 
-// clearHouse(true, (reward) => {
-//   console.log(reward);
+// goToTurkey(false, (err, data) => {
+//   if(err) {
+//     console.log(err, 'bad');
+//   } else {
+//     console.log('good', data);
+//   }
 // });
 
-users = [
-  { name: 'Roman Trynko', age: 32 },
-  { name: 'Valia Dyatlov', age: 12 },
-  { name: 'Roman Vasyl', age: 45 },
-  { name: 'Pasha Loginov', age: 44 }
-];
 
-const nameToFind = 'ro'
 
-const filteredNames = users.reduce((prev, curr) => {
-  if (curr.name.toLowerCase().startsWith(nameToFind.toLocaleLowerCase()) && !prev.includes(curr.name)) {
-    prev.push(curr.name);
-  };
+let money = 0;
 
-  return prev;
-}, []);
+const clearHouse = (jobDone, cb) => {
+  setTimeout(() => {
+    if (jobDone) {
+      money = 500;
 
-console.log(filteredNames);
+      cb(null, money);
+    } else {
+      cb('oops')
+    }
+  }, 2000);
+};
 
+const buyJeans = (money, cb) => {
+  setTimeout(() => {
+    if (money > 200) {
+      console.log('buy jeans');
+      money = money - 200;
+
+      cb(null, money)
+    } else {
+      console.log('no money');
+
+      cb('no', null)
+    }
+  }, 1000)
+};
+
+const goEat = (money, cb) => {
+  if (money > 100) {
+    console.log('go eat');
+    money = money - 50;
+
+    cb(null, money)
+  } else {
+    console.log('no money');
+    
+    cb(err)
+  }
+}
+
+clearHouse(true, (err, data) => {
+  if (err) {
+    document.write('something went wrong')
+  } else {
+    document.write('ok ' + data);
+
+    buyJeans(data, (err, rest) => {
+      if (err) {
+        document.write('no money');
+      } else {
+        document.write('yes!');
+
+        goEat(rest, (err, data) => {
+          if (err) {
+            document.write('no money for food');
+          } else {
+            document.write('eat your food')
+          }
+        })
+      }
+    })
+  }
+});
+
+console.log(money);
